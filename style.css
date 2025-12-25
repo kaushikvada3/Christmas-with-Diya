@@ -315,24 +315,46 @@ h3 {
     display: none;
     background: #fffdf5;
     color: #2c2c2c;
-    padding: 40px 30px;
+    padding: 50px 40px;
     border-radius: 5px;
     font-family: 'Dancing Script', cursive;
-    font-size: 1.25rem;
-    /* Readable size */
+    font-size: 1.35rem;
     line-height: 1.8;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     background-image:
         linear-gradient(90deg, transparent 39px, #d1d5db 39px, #d1d5db 41px, transparent 41px),
         linear-gradient(#eee .1em, transparent .1em);
     background-size: 100% 2em;
-    white-space: pre-wrap;
-    /* Preserves paragraphs/spacing if raw text */
+    white-space: normal;
+    /* Use normal since we have p tags */
 }
 
-.letter-content p {
+.letter-greeting {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.letter-body p {
     margin-bottom: 1.5em;
-    /* Nice spacing between paragraphs */
+    text-align: left;
+}
+
+.letter-signature {
+    margin-top: 3rem;
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.sig-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.sig-sub {
+    font-size: 1.2rem;
+    opacity: 0.8;
 }
 
 .letter-content.open {
