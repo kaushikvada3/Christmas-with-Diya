@@ -1,0 +1,420 @@
+/* 
+  Magical Christmas Theme - "WOW" Edition
+  Colors: Deep Midnight Blue, Ruby Red, Golden Glow, Snow White
+*/
+
+:root {
+    --primary-red: #c92a2a;
+    --primary-green: #2b8a3e;
+    --accent-gold: #ffd43b;
+    --midnight-blue: #020024;
+    --star-glow: rgba(255, 255, 255, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="gold"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>'), auto;
+}
+
+body {
+    background: linear-gradient(to bottom, #020024 0%, #090979 35%, #00d4ff 100%);
+    /* Fallback */
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    perspective: 1px;
+    transform-style: preserve-3d;
+}
+
+/* --- Magical Background (Stars) --- */
+#stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--duration, 3s) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+        box-shadow: 0 0 10px white;
+    }
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3 {
+    font-family: 'Great Vibes', cursive;
+    color: var(--accent-gold);
+}
+
+.glow-text {
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #e60073,
+        0 0 40px #e60073,
+        0 0 50px #e60073,
+        0 0 60px #e60073,
+        0 0 70px #e60073;
+    animation: neon-pulse 1.5s infinite alternate;
+}
+
+@keyframes neon-pulse {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073;
+    }
+
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073;
+    }
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s infinite linear;
+    background-size: 200% auto;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.hero p {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    animation: fadeInUp 2s ease 1s backwards;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- 3D Gallery --- */
+.gallery-section {
+    perspective: 1000px;
+    padding: 100px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.banner {
+    width: 100%;
+    height: 350px;
+    text-align: center;
+    position: relative;
+}
+
+.slider {
+    position: absolute;
+    width: 220px;
+    height: 300px;
+    top: 10%;
+    left: calc(50% - 110px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 25s linear infinite;
+    z-index: 10;
+}
+
+.item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform:
+        rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+    transition: transform 0.5s;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 4px solid var(--accent-gold);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .slider {
+        width: 160px;
+        height: 240px;
+        left: calc(50% - 80px);
+    }
+
+    .item {
+        transform:
+            rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(200px);
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* --- Realistic Envelope & Letter --- */
+.letter-section {
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: #c92a2a;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope-wrapper:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* Envelope Flap */
+.envelope-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #a61e1e;
+    clip-path: polygon(0 0, 50% 50%, 100% 0);
+    transform-origin: top;
+    transition: transform 0.6s 0.2s;
+    z-index: 5;
+}
+
+/* Open Animation */
+.envelope-wrapper.open::before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+/* Letter Sheet inside */
+.letter-sheet {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    height: 90%;
+    background: #fffdf5;
+    transition: transform 0.6s 0.8s, height 0.6s 0.8s, z-index 0.1s 0.8s;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 0.8rem;
+    /* Small initially */
+    color: #333;
+    overflow: hidden;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.envelope-wrapper.open .letter-sheet {
+    transform: translateY(-20px);
+    /* Just peek out a little in 3D view, or pop out fully? */
+    /* Let's make it expand to fullscreen modal for readability */
+}
+
+/* Wax Seal */
+.wax-seal {
+    position: absolute;
+    top: 40%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
+    border-radius: 50%;
+    z-index: 6;
+    border: 4px double #8a6d3b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #5c4008;
+    transition: opacity 0.3s;
+}
+
+.envelope-wrapper.open .wax-seal {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Full Screen Letter Overlay (The content that actually shows) */
+.letter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+.letter-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.letter-paper {
+    background: #fffdf5;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 40px;
+    border-radius: 5px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    box-shadow:
+        0 0 50px rgba(0, 0, 0, 0.8),
+        inset 0 0 60px rgba(160, 140, 100, 0.2);
+    transform: scale(0.8);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-image: repeating-linear-gradient(#fffdf5 0px, #fffdf5 29px, #d1d5db 30px);
+}
+
+.letter-overlay.show .letter-paper {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+}
+
+
+/* --- Cursor Fairy Dust --- */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    background: radial-gradient(circle, #fff, transparent);
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: fadeOut 1s forwards;
+    box-shadow: 0 0 10px gold;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(20px) scale(0);
+    }
+}
+
+/* --- Floating Hearts & Trees (Kept from before) --- */
+.decorations {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.tree {
+    position: fixed;
+    bottom: 0;
+    font-size: 5rem;
+    z-index: 5;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.4));
+}
+
+.left-tree {
+    left: 20px;
+}
+
+.right-tree {
+    right: 20px;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-20vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.heart-floater {
+    position: fixed;
+    top: auto;
+    bottom: -50px;
+    font-size: 2rem;
+    animation: floatHeart 10s linear infinite;
+    z-index: 2;
+}

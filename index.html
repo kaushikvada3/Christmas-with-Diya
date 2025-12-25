@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas, Diya! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;400;600&family=Dancing+Script:wght@500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Snow Container -->
+    <div id="snow-container"></div>
+
+    <!-- Background Music (User needs to add file) -->
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="music-toggle" id="music-btn" title="Play Music">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Merry Christmas, My Love ❤️</h1>
+            <p>To the one who makes every moment magical. Here's a little something I made just for you.</p>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <!-- 3D Rotating Gallery -->
+            <div class="banner">
+                <div class="slider" style="--quantity: 6">
+                    <div class="item" style="--position: 1"><img src="033F5E93-C9A1-43A0-B7B7-C25618F8868E_1_105_c.jpeg"
+                            alt=""></div>
+                    <div class="item" style="--position: 2"><img src="748846EB-CE77-4635-A72D-21BF857A6ADB_1_105_c.jpeg"
+                            alt=""></div>
+                    <div class="item" style="--position: 3"><img src="8B1B330D-7FBC-4BBF-AADB-F47EA9129152_1_105_c.jpeg"
+                            alt=""></div>
+                    <div class="item" style="--position: 4"><img src="A1241633-8788-44E0-A210-1B6458EC58A9_1_105_c.jpeg"
+                            alt=""></div>
+                    <div class="item" style="--position: 5"><img src="C14BE9D8-6726-4A59-8CEF-5E1096926EC8_1_105_c.jpeg"
+                            alt=""></div>
+                    <div class="item" style="--position: 6"><img src="C2202871-437C-449A-B0E0-69F140AF8790_1_105_c.jpeg"
+                            alt=""></div>
+                </div>
+            </div>
+
+            <!-- Festive Decorations -->
+            <div class="decorations">
+                <div class="tree left-tree">🎄</div>
+                <div class="tree right-tree">🎄</div>
+                <div class="heart-floater">❤️</div>
+                <div class="heart-floater">💖</div>
+                <div class="heart-floater">💕</div>
+            </div>
+        </section>
+
+        <!-- Letter Section -->
+        <section class="letter-section">
+            <div class="envelope-wrapper">
+                <div class="wax-seal">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <!-- Decorative peek -->
+                <div class="letter-sheet"></div>
+            </div>
+        </section>
+
+        <!-- Full Screen Letter Modal -->
+        <div class="letter-overlay">
+            <div class="letter-paper">
+                <div class="close-btn">&times;</div>
+                <p>My Dearest Diya,</p>
+                <p>Merry Christmas! 🎄✨</p>
+                <p>
+                    I wanted to create something as magical as you are to me.
+                    This year has been the best year of my life, simply because you were in it.
+                </p>
+                <p>
+                    Every time you smile, my world lights up just like these stars.
+                    I love you more than words can say.
+                </p>
+                <p>With all my love,<br>Kaushik</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
