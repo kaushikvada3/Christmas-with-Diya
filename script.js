@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const duration = Math.random() * 5 + 5;
         snowflake.style.animation = `fall ${duration}s linear infinite`;
-        snowflake.style.animationDelay = Math.random() * 5 + 's';
+        // Negative delay makes them start mid-animation (already falling)
+        snowflake.style.animationDelay = '-' + (Math.random() * duration) + 's';
 
         snowContainer.appendChild(snowflake);
     }
