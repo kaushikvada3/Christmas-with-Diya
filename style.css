@@ -1,5 +1,5 @@
 /* 
-  Romantic Christmas Theme - Enhanced
+  Romantic Christmas Theme - Optimized & Smooth
 */
 
 :root {
@@ -16,12 +16,18 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
 body {
     background: var(--bg-gradient);
     color: #fff;
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -30,6 +36,30 @@ h3 {
     font-family: 'Great Vibes', cursive;
     color: var(--accent-gold);
     text-shadow: 0 0 15px rgba(248, 178, 41, 0.6);
+}
+
+/* --- Mistletoe Decoration --- */
+.mistletoe-container {
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    z-index: 100;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+    animation: swayMistletoe 6s ease-in-out infinite;
+}
+
+@keyframes swayMistletoe {
+
+    0%,
+    100% {
+        transform: translateX(-50%) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateX(-50%) rotate(5deg);
+    }
 }
 
 /* --- Hero --- */
@@ -46,15 +76,17 @@ h3 {
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: clamp(3rem, 8vw, 6rem);
+    /* Fluid typography */
     margin-bottom: 0.5rem;
     animation: pulse 3s infinite ease-in-out;
+    will-change: transform;
 }
 
-@media (max-width: 600px) {
-    .hero h1 {
-        font-size: 3rem;
-    }
+.hero p {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    max-width: 800px;
+    line-height: 1.6;
 }
 
 /* --- 3D Rotating Gallery --- */
@@ -66,17 +98,16 @@ h3 {
 
 .section-title {
     text-align: center;
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 6vw, 4rem);
     margin-bottom: 4rem;
 }
 
 .banner {
     width: 100%;
-    height: 300px;
+    height: 350px;
     text-align: center;
     position: relative;
     padding-top: 50px;
-    /* Space for perspective */
 }
 
 .slider {
@@ -87,8 +118,10 @@ h3 {
     left: calc(50% - 100px);
     transform-style: preserve-3d;
     transform: perspective(1000px);
-    animation: autoRun 20s linear infinite;
+    animation: autoRun 25s linear infinite;
+    /* Slower = smoother */
     z-index: 2;
+    will-change: transform;
 }
 
 @keyframes autoRun {
@@ -106,7 +139,8 @@ h3 {
     inset: 0 0 0 0;
     transform:
         rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(250px);
-    /* Radius of the circle */
+    backface-visibility: hidden;
+    /* Performance boost */
 }
 
 .item img {
@@ -116,47 +150,66 @@ h3 {
     border-radius: 10px;
     border: 3px solid var(--accent-gold);
     box-shadow: 0 0 15px rgba(248, 178, 41, 0.5);
+    display: block;
 }
 
-/* Helper to pause on hover for better UX */
+/* Pause on hover */
 .slider:hover {
     animation-play-state: paused;
 }
 
-/* Mobile responsive adjustments for 3D slider */
-@media (max-width: 600px) {
+/* Responsive Logic */
+@media (max-width: 1024px) {
+
+    /* Tablet */
     .banner {
-        height: 250px;
+        height: 320px;
     }
 
     .slider {
-        width: 140px;
-        height: 200px;
-        left: calc(50% - 70px);
+        width: 180px;
+        height: 240px;
+        left: calc(50% - 90px);
     }
 
     .item {
-        /* Reduce radius on mobile so it doesn't overflow screen */
-        transform:
-            rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(220px);
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* Mobile */
+    .banner {
+        height: 280px;
+    }
+
+    .slider {
+        width: 130px;
+        height: 190px;
+        left: calc(50% - 65px);
+    }
+
+    .item {
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(170px);
     }
 }
 
 
-/* --- Decorations --- */
+/* --- Decorations (Trees & Hearts) --- */
 .decorations {
     position: relative;
     height: 0;
-    /* Just a container */
 }
 
 .tree {
     position: fixed;
     bottom: 0;
-    font-size: 5rem;
+    font-size: clamp(3rem, 10vw, 5rem);
     z-index: 1;
     opacity: 0.8;
     filter: drop-shadow(0 0 10px var(--primary-green));
+    will-change: transform;
 }
 
 .left-tree {
@@ -173,11 +226,11 @@ h3 {
 
     0%,
     100% {
-        transform: rotate(-5deg);
+        transform: rotate(-3deg);
     }
 
     50% {
-        transform: rotate(5deg);
+        transform: rotate(3deg);
     }
 }
 
@@ -186,10 +239,11 @@ h3 {
     position: fixed;
     color: #ff4d6d;
     font-size: 2rem;
-    animation: floatHeart 10s linear infinite;
+    animation: floatHeart 12s linear infinite;
     top: 100vh;
     z-index: 0;
     text-shadow: 0 0 5px #ff4d6d;
+    will-change: transform;
 }
 
 .heart-floater:nth-child(3) {
@@ -222,13 +276,6 @@ h3 {
     }
 }
 
-@media (max-width: 600px) {
-    .tree {
-        font-size: 3rem;
-    }
-
-    /* Smaller trees on mobile */
-}
 
 /* --- Letter Section --- */
 .letter-section {
@@ -242,7 +289,8 @@ h3 {
 .envelope-container {
     perspective: 1000px;
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
+    /* Slightly wider for long text */
 }
 
 .click-to-open {
@@ -250,7 +298,7 @@ h3 {
     padding: 20px;
     border-radius: 12px;
     color: white;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     font-family: 'Great Vibes', cursive;
     text-align: center;
     border: 2px solid var(--accent-gold);
@@ -266,17 +314,25 @@ h3 {
 .letter-content {
     display: none;
     background: #fffdf5;
-    color: #4a4a4a;
-    padding: 30px;
+    color: #2c2c2c;
+    padding: 40px 30px;
     border-radius: 5px;
     font-family: 'Dancing Script', cursive;
-    font-size: 1.3rem;
-    line-height: 1.6;
+    font-size: 1.25rem;
+    /* Readable size */
+    line-height: 1.8;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     background-image:
         linear-gradient(90deg, transparent 39px, #d1d5db 39px, #d1d5db 41px, transparent 41px),
         linear-gradient(#eee .1em, transparent .1em);
     background-size: 100% 2em;
+    white-space: pre-wrap;
+    /* Preserves paragraphs/spacing if raw text */
+}
+
+.letter-content p {
+    margin-bottom: 1.5em;
+    /* Nice spacing between paragraphs */
 }
 
 .letter-content.open {
@@ -296,7 +352,6 @@ h3 {
     }
 }
 
-
 /* --- Utilities --- */
 #snow-container {
     position: fixed;
@@ -312,6 +367,7 @@ h3 {
     position: absolute;
     color: #fff;
     opacity: 0.8;
+    will-change: transform;
 }
 
 .music-toggle {
