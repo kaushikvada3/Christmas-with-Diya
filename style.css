@@ -317,8 +317,10 @@ h3 {
     color: #2c2c2c;
     padding: 50px 40px;
     border-radius: 5px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.35rem;
+    font-family: 'Raleway', sans-serif;
+    /* Regular font as requested */
+    font-size: 1.1rem;
+    /* Adjusted for regular font readability */
     line-height: 1.8;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     background-image:
